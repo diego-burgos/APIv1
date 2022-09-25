@@ -4,7 +4,10 @@ import sequelize from '../config.js'
 export const User = sequelize.define('User',{
     email:{
         type: DataTypes.STRING,
-        unique: true,
+        unique:{
+            args: true,
+            msg: "El correo debe ser unico",
+        },
         allowNull: false,
         validate:{
             isEmail: {
@@ -21,9 +24,9 @@ export const User = sequelize.define('User',{
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-            is:{
-                args:  '[^a-zA-Z0-9]',
-                msg: 'El nombre de usuario no es válido',
+            isAlpha:{
+                args: true,
+                msg:'El nombre de usuario solamente puede tener letras',
             },
             min:{
                 args: 5,
