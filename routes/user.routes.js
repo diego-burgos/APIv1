@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/',userController.getUsers);
 router.get('/:id',userController.getUserById)
-router.post('/create',verifiToken, userController.createUser);
+router.post('/create', userController.createUser);
 router.put('/:id',userController.updateUser)
 router.delete('/:id',userController.deleteUser)
 

@@ -1,7 +1,6 @@
 import { User } from '../models/user.model.js';
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
-import { where } from 'sequelize';
 
 const getUsers = async (req, res) => {
     try{
@@ -33,6 +32,7 @@ const createUser = async(req, res) => {
             message: "Campos incompletos"
         })
     }
+    
     try{
         const createUser = await User.create({email, username, password:bcrypt.hashSync(password , 10)})
         if(createUser){
@@ -67,6 +67,10 @@ const updateUser = async (req, res) => {
     const { id} = req.params
     try{
         const user = await User.update({ email, password, username }, { where:{ id} })
+        res.json({
+            message: "Usuario actualizado correctamente",
+            user
+        })
     }catch(e){
         res.json({
             message: e.errors[0].message,
