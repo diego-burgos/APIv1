@@ -29,7 +29,7 @@ app.use('/apiv1/persona',personaRoutes)
 // Puerto por donde la apiv1 escuchara las peticiones
 app.listen(app.get('port'),async ()=>{
     try {
-       //await sequelize.sync({ force: true });
+        //await sequelize.sync({ force: true });
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
       } catch (error) {

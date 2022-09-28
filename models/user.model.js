@@ -18,7 +18,7 @@ export const User = sequelize.define('User',{
                 args: 10,
                 msg:'El correo debe tener como minimo 10 caracteres',
             }
-            }
+        }
     },
     username:{
         type: DataTypes.STRING,
